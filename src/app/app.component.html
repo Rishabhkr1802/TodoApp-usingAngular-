@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <span>Todo App</span>
+</mat-toolbar>
+<div style="margin: 1rem">
+  <h1>ToDo Items</h1>
+  <mat-divider></mat-divider>
+  <div>
+    <div class="split left">
+      <div class="centeredLeft">
+        <app-show-todo-items></app-show-todo-items>
+      </div>
+    </div>
+
+    <div class="split right">
+      <div class="centeredRight">
+        <app-add-todo-item></app-add-todo-item>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

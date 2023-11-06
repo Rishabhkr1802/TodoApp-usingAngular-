@@ -1,0 +1,35 @@
+<div style="margin: 1rem">
+  <h2>Add New Item</h2>
+  <form class="add-todo-item-form" [formGroup]="addTodoItemForm">
+    <mat-form-field class="todo-form-field">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" />
+      <mat-error *ngIf="addTodoItemForm.controls['description'].errors?.required">
+        Please enter Description
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="todo-form-field" appearance="fill">
+      <mat-label>Due Date</mat-label>
+      <input matInput formControlName="dueDate" placeholder="mm/dd/yyyy" [matDatepicker]="datepicker" />
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel>Cancel</button>
+          <button mat-raised-button color="primary" matDatepickerApply>
+            Apply
+          </button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+      <mat-error *ngIf="addTodoItemForm.controls['dueDate'].errors?.required">
+        Please enter valid Due Date
+      </mat-error>
+    </mat-form-field>
+    <div class="todo-button-row">
+      <button mat-raised-button (click)="resetValues()" name="cancel">Cancel</button>
+      <button style="margin-left: 1rem" (click)="addTodoItem()" [disabled]="addTodoItemForm.invalid" mat-raised-button
+        color="accent" name="submit">
+        Save
+      </button>
+    </div>
+  </form>
+</div>

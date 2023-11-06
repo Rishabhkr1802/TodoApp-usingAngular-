@@ -1,0 +1,27 @@
+<div style="margin: 9rem"></div>
+<mat-form-field class="item-form-full-width">
+  <mat-label>Todo Filter</mat-label>
+  <input matInput type="text" name='filter' [(ngModel)]="searchText" />
+</mat-form-field>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th style="width: 50%">Description</th>
+      <th style="width: 20%">Due Date</th>
+      <th style="width: 10%">Done</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items | appFilter : searchText">
+      <td name="descriptionValue">{{ item.description }}</td>
+      <td name="dueDateValue">{{ item.dueDate }}</td>
+      <td>
+        <mat-checkbox color="primary" [(ngModel)]="item.isDone"> </mat-checkbox>
+      </td>
+      <td>
+        <mat-icon [(ngModel)]="item.id" name="RemoveItem" ngDefaultControl (click)="removeTodoItem(item.id)"
+          aria-hidden="false" aria-label="Example home icon">remove_circle</mat-icon>
+      </td>
+    </tr>
+  </tbody>
+</table>
